@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Car Booking by Dick Shern</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="title">Car Booking by Dick Shern</string>
+
+    <!--DEFAULTS-->
+    <string name="default_message_title">Message</string>
+    <string name="default_message_failed_to_connect_to_server">Failed to connect to server.</string>
+    <string name="default_message_failed_to_read_payload">Failed to read payload.</string>
+    <string name="default_message_ok">OK</string>
+    <string name="default_messsage_continue">CONTINUE</string>
+    <string name="custom_message_error">Error %1$s</string>
+
+
+    <string name="loading_custom">%1$s. Please wait…</string>
+    <string name="loading_database">Loading %1$s. Please wait…</string>
+    <string name="loading_simple">Loading…</string>
+
+    <!--SYSTEM MESSAGES-->
+    <string name="popup_message_start_welcome">Welcome to</string>
+    <string name="system_message_fail_get_json_server">Couldn\'t get json from server.</string>
+    <string name="system_message_error_parsing_json">Json parsing error:</string>
+    <string name="system_response_null">Response is NULL</string>
+    <string name="creating_custom">Creating %1$s…</string>
+    <string name="saving_custom">Saving %1$s…</string>
+    <string name="deleting_custom">Deleting %1$s…</string>
+    <string name="system_message_button_does_not_have_function">Button does not have a function.</string>
+
+
+    <string name="message_custom_cannot_be_empty">%1$s cannot be empty</string>
+
+</resources>

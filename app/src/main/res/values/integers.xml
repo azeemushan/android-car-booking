@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!--ANIMATION-->
+    <integer name="speed_enter">1100</integer>
+    <integer name="speed_exit">1000</integer>
+
+    <integer name="speed_enter_fast">350</integer>
+    <integer name="speed_exit_fast">300</integer>
+
+    <integer name="deco_circle_fill">1500</integer>
+
+</resources>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/imgMessage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:scaleType="fitCenter"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:src="@android:drawable/ic_delete"
+            app:layout_constraintBottom_toTopOf="@+id/tvTitle"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvTitle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/default_message_title"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvMessage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgMessage" />
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/default_message_title"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnContinue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@android:color/holo_green_light"
+            android:maxHeight="200dp"
+            android:pointerIcon="none"
+            android:text="@string/default_message_ok"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMessage" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/linearLayout3"
+        android:layout_alignRight="@+id/linearLayout3"
+        android:layout_alignTop="@+id/linearLayout3"
+        android:background="@android:color/black"
+        android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+</RelativeLayout>
