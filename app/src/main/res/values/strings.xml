@@ -27,7 +27,9 @@
     <string name="deleting_custom">Deleting %1$s…</string>
     <string name="system_message_button_does_not_have_function">Button does not have a function.</string>
 
-
     <string name="message_custom_cannot_be_empty">%1$s cannot be empty</string>
+
+    <!--PAGES-->
+    <string name="title_car_booking">Car Booking</string>
 
 </resources>

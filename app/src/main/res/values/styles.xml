@@ -100,4 +100,13 @@
         <item name="android:textColor">@color/main_orange</item>
     </style>
 
+    <style name="btn_solid_orange_white_txt">
+        <item name="android:layout_width" tools:ignore="NewApi">wrap_content</item>
+        <item name="android:layout_height" tools:ignore="NewApi">wrap_content</item>
+        <item name="android:background" tools:ignore="NewApi">@drawable/round_orange_main_buttons</item>
+        <item name="android:textColor" tools:ignore="NewApi">@color/white</item>
+        <item name="android:paddingLeft" tools:ignore="NewApi">8dp</item>
+        <item name="android:paddingRight" tools:ignore="NewApi">8dp</item>
+    </style>
+
 </resources>

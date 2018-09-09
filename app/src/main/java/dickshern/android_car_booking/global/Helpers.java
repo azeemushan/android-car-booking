@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -117,6 +119,15 @@ public class Helpers {
             count++;
         }
         return tempStr.toString();
+    }
+
+    public static void DelayedRefreshStop(final SwipeRefreshLayout swipeRefreshLayout) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        }, 2000);
     }
 
 
