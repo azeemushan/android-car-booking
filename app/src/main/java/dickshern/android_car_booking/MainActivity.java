@@ -21,14 +21,6 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,10 +36,8 @@ import dickshern.android_car_booking.global.Helpers;
 import dickshern.android_car_booking.http.HttpHandler;
 import dickshern.android_car_booking.http.HttpResponse;
 
-import static dickshern.android_car_booking.database.DatabaseConfig.WEBTAG_ACCEPT;
 import static dickshern.android_car_booking.database.DatabaseConfig.WEBTAG_ARR_DROPOFFLOCATIONS;
 import static dickshern.android_car_booking.database.DatabaseConfig.WEBTAG_ARR_LOCATION;
-import static dickshern.android_car_booking.database.DatabaseConfig.WEBTAG_AUTHORIZATIONN;
 import static dickshern.android_car_booking.database.DatabaseConfig.WEBTAG_AVAILABLECARS;
 import static dickshern.android_car_booking.database.DatabaseConfig.WEBTAG_DATA;
 import static dickshern.android_car_booking.database.DatabaseConfig.WEBTAG_END_TIME;
@@ -66,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button btnGetBookingAvailability;
     Button btnGetCarLocations;
-    Button btnVolleyGetBooking;
 
     EditText etOne;
     EditText etTwo;
@@ -87,29 +76,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.test_api_layout);
 
         prefsManager = new PrefsManager(MainActivity.this);
-//        prefsManager.setIP("192.168.1.11");
-
 
         btnGetBookingAvailability = findViewById(R.id.btnGetBookingAvailability);
         btnGetBookingAvailability.setOnClickListener(this);
         btnGetCarLocations = findViewById(R.id.btnGetCarLocations);
         btnGetCarLocations.setOnClickListener(this);
-        btnVolleyGetBooking = findViewById(R.id.btnVolleyGetBooking);
-        btnVolleyGetBooking.setOnClickListener(this);
 
-        etOne = (EditText) findViewById(R.id.etOne);
-        etTwo = (EditText) findViewById(R.id.etTwo);
+        etOne = findViewById(R.id.etOne);
+        etTwo = findViewById(R.id.etTwo);
 
-        lv = (ListView) findViewById(R.id.listViewMain);
+        lv = findViewById(R.id.listViewMain);
 
-//        new webGetBooking().execute();
-        makeVolleyRequest();
+        new webGetBooking().execute();
     }
 
     @Override
     public void onClick(View click) {
         int id = click.getId();
-        Intent nextScreen;
 
         switch (id) {
             case R.id.btnGetBookingAvailability:
@@ -119,10 +102,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnGetCarLocations:
                 new webGetCarLocation().execute();
-                Helpers.replaceToast(this, "Retrieving available bookings", Toast.LENGTH_SHORT);
-                break;
-            case R.id.btnVolleyGetBooking:
-                makeVolleyRequest();
                 Helpers.replaceToast(this, "Retrieving available bookings", Toast.LENGTH_SHORT);
                 break;
 
@@ -393,7 +372,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
             }
 
-            return null;
+            return tempMessageMap;
         }
 
         @Override
@@ -478,112 +457,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         dialog.show();
     }
-
-
-    public void makeVolleyRequest() {
-        pDialog = new ProgressDialog(this);
-        pDialog.setMessage("Retrieving available Bookings");
-        pDialog.setIndeterminate(false);
-        pDialog.setCancelable(false);
-        pDialog.show();
-
-        JSONObject jsonParams = new JSONObject();
-
-        long startTime = System.currentTimeMillis() / 1000;
-        long endtime = (System.currentTimeMillis() / 1000) + 3600;
-
-        try {
-//            for (int i = startEditText; i < eTexts.size(); i++) {
-//                if (!(i == 4)) {
-//                    jsonParams.put(String.valueOf(eTexts.get(i).getTag()), String.valueOf(eTexts.get(i).getText()));
-//                }
-//            }
-            jsonParams.put(WEBTAG_START_TIME, startTime);
-            jsonParams.put(WEBTAG_END_TIME, endtime);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-//            Log.e("TOKEN", prefsManager.getToken());
-//            Log.e("TOKEN", String.valueOf(jsonParams));
-
-        String url = webEPBookingAvailability;
-
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-        JsonObjectRequest jobReq = new JsonObjectRequest(Request.Method.GET, url, jsonParams,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject jsonObject) {
-                        Log.e("@@@RESPONSE", String.valueOf(jsonObject));
-
-                        try {
-                            if (jsonObject.getString(WEBTAG_DATA) != null) {
-
-                                JSONObject jsonData = jsonObject.getJSONObject(WEBTAG_DATA);
-                                Log.e("@@@VOLLEY DATA", String.valueOf(jsonData));
-//
-//                                for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
-//                                    String mapKey = entry.getKey();
-//                                    String mapValue = entry.getValue();
-////                            prefsManager.setCustomPrefs(mapKey, mapValue);
-//                                    Log.e("CONTAINS@", mapKey);
-//                                    Log.e("CONTAINS@", mapValue);
-//
-//                                    if (Arrays.asList(GlobalConstants.userProfileToSave).contains(mapKey)) {
-//                                        prefsManager.setCustomPrefs(mapKey, mapValue);
-//                                    }
-//                                }
-//
-//                                tempMessageMap.put(WEBTAG_SUCCESS, tempMessage);
-                            } else
-                                Helpers.replaceToast(MainActivity.this, "No data received", Toast.LENGTH_SHORT);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-
-                        if (tempMessageMap != null) {
-                            String key = "";
-                            String value = "";
-                            for (Map.Entry<String, String> entry : tempMessageMap.entrySet()) {
-                                key = entry.getKey();
-                                value = entry.getValue();
-                            }
-
-//                            if (key.equals(WEBTAG_SUCCESS)) {
-//                                Helpers.replaceToast(MainActivity.this, "Profile saved", Toast.LENGTH_SHORT);
-//                                Intent intent = getIntent();
-//                                finish();
-//                                startActivity(intent);
-//                            } else
-//                                Helpers.replaceToast(MainActivity.this, value, Toast.LENGTH_SHORT);
-                        } else
-                            Helpers.replaceToast(MainActivity.this, getString(R.string.custom_message_error, getString(R.string.system_response_null)), Toast.LENGTH_SHORT);
-
-                        pDialog.dismiss();
-                    }
-
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(final VolleyError volleyError) {
-                        Log.e("@@@ERROR", String.valueOf(volleyError));
-                        pDialog.dismiss();
-                    }
-                }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put(WEBTAG_ACCEPT, "application/json");
-                params.put(WEBTAG_AUTHORIZATIONN
-                        , "Bearer " + prefsManager.getToken());
-
-                return params;
-            }
-        };
-        queue.add(jobReq);
-        queue.start();
-    }
-
 
 }
