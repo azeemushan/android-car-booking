@@ -175,7 +175,7 @@ public class TestApiActivity extends AppCompatActivity implements View.OnClickLi
                             JSONObject jsonobj = new JSONObject(jsonStr);
                             JSONArray jsonArr = jsonobj.getJSONArray(WEBTAG_DATA);
 
-                            // looping through All Products
+                            // looping through all Bookings
                             for (int i = 0; i < jsonArr.length(); i++) {
                                 JSONObject c = jsonArr.getJSONObject(i);
 
@@ -255,7 +255,7 @@ public class TestApiActivity extends AppCompatActivity implements View.OnClickLi
                                     TestApiActivity.this, listItems,
                                     R.layout.database_list_booking_availability, new String[]{WEBTAG_ID,
                                     WEBTAG_ARR_LOCATION, WEBTAG_AVAILABLECARS, WEBTAG_ARR_DROPOFFLOCATIONS},
-                                    new int[]{R.id.tvID, R.id.tvLocation, R.id.tvAvailableCars, R.id.tvDropOffLocations});
+                                    new int[]{R.id.listTVID, R.id.listTVLocation, R.id.tvAvailableCars, R.id.listTVDropOffLocations});
                             //updating listview
                             lv.setAdapter(adapter);
                         }
@@ -318,7 +318,7 @@ public class TestApiActivity extends AppCompatActivity implements View.OnClickLi
                             JSONObject jsonobj = new JSONObject(jsonStr);
                             JSONArray jsonArr = jsonobj.getJSONArray(WEBTAG_DATA);
 
-                            // looping through All Products
+                            // looping through Car |Locations
                             for (int i = 0; i < jsonArr.length(); i++) {
                                 JSONObject c = jsonArr.getJSONObject(i);
 
@@ -400,7 +400,7 @@ public class TestApiActivity extends AppCompatActivity implements View.OnClickLi
                                     TestApiActivity.this, listItems,
                                     R.layout.database_list_car_locations, new String[]{WEBTAG_ID,
                                     WEBTAG_LATITUDE, WEBTAG_LONGITUDE, WEBTAG_ONTRIP},
-                                    new int[]{R.id.tvID, R.id.tvLatitude, R.id.tvLongitude, R.id.tvOnTrip});
+                                    new int[]{R.id.listTVID, R.id.listTVLatitude, R.id.listTVLongitude, R.id.listTVOnTrip});
 
                             //updating listview
                             lv.setAdapter(adapter);

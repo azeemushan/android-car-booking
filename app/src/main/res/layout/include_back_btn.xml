@@ -16,9 +16,9 @@
         android:scaleType="fitCenter"
         android:scaleX="0.6"
         android:scaleY="0.6"
-        android:src="@drawable/ic_back_orange"
+        android:src="@drawable/custom_left_arrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_back_orange" />
+        app:srcCompat="@drawable/custom_left_arrow" />
 
 </android.support.constraint.ConstraintLayout>

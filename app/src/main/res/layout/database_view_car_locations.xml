@@ -28,33 +28,23 @@
                 android:paddingLeft="10dip"
                 android:paddingRight="10dip"
                 android:paddingTop="10dip"
-                android:text="Booking ID"
+                android:text="Car ID"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/tvAvailableCars"
+                android:id="@+id/tvLatitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="Available Cars here"
+                android:text="Latitude here"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/titleLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dip"
-                android:paddingRight="10dip"
-                android:paddingTop="10dip"
-                android:text="Locations"
-                android:textSize="30sp" />
-
-            <TextView
-                android:id="@+id/tvLocations"
+                android:id="@+id/tvLongitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="Locations here"
+                android:text="Longitude here"
                 android:textSize="24sp" />
 
             <TextView
@@ -77,26 +67,6 @@
                 android:textSize="24sp"
                 android:visibility="gone" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dip"
-                android:paddingRight="10dip"
-                android:paddingTop="10dip"
-                android:text="Dropoff Locations"
-                android:textSize="30sp" />
-
-            <TextView
-                android:id="@+id/tvDropLocations"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dip"
-                android:layout_marginBottom="15dip"
-                android:inputType="numberDecimal"
-                android:singleLine="true"
-                android:text="Dropoff here"
-                android:textSize="24sp" />
-
             <TextView android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Status"
@@ -105,14 +75,16 @@
                 android:paddingTop="10dip"
                 android:textSize="30sp"/>
 
-            <TextView android:id="@+id/inputStatus"
+            <TextView
+                android:id="@+id/tvOnTrip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dip"
                 android:layout_marginBottom="15dip"
-                android:lines="1"
                 android:gravity="top"
-                android:textSize="24sp" />
+                android:lines="1"
+                android:textSize="24sp"
+                app:autoSizeTextType="uniform" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -130,4 +102,5 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

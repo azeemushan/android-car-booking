@@ -72,6 +72,11 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
 
     ArrayList<HashMap<String, String>> listItems;
 
+    //JSON node names
+    public static final String TAG_ID = "id";
+    public static final String TAG_LATITUDE = "latitude";
+    public static final String TAG_LONGITUDE= "longitude";
+    public static final String TAG_ONTRIP = "on_trip";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,30 +85,25 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
 
         prefsManager = new PrefsManager(AllCarLocationsActivity.this);
 
-        TextView tvDBCategory = (TextView) findViewById(R.id.tvDBCategory);
+        TextView tvDBCategory;
+        tvDBCategory = findViewById(R.id.tvDBCategory);
         tvDBCategory.setText("All Car Locations");
-        FloatingActionButton fabTest = (FloatingActionButton) findViewById(R.id.fab1);
+        FloatingActionButton fabTest = findViewById(R.id.fab1);
         fabTest.hide();
 
         // Get listview
         lv = findViewById(R.id.listViewMain);
 
-        // on seleting single product
-        // launching Edit Product Screen
+        // on item select, view further details of item
         lv.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                // getting values from selected ListItem
-                String pid = ((TextView) view.findViewById(R.id.tvID)).getText()
-                        .toString().substring(((TextView) view.findViewById(R.id.tvID)).getText()
-                                .toString().indexOf(" ") + 1);;
-
                 // Starting new intent
                 Intent in = new Intent(getApplicationContext(),
-                        MainActivity.class);
-                // sending pid to next activity
+                        ViewCarLocationDetailsActivity.class);
+                // Send item to next activity
                 in.putExtra(TAG_CAR_LOCATIONS_ALL_DETAILS, listItems.get(position));
 
                 // starting new activity and expecting some response back
@@ -114,11 +114,11 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
 
         ViewCompat.setNestedScrollingEnabled(lv, true);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
 
         /**
@@ -132,7 +132,7 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabRefreshList);
+        FloatingActionButton fab = findViewById(R.id.fabRefreshList);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,21 +142,6 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
 
     }
 
-    // Response from Edit Product Activity
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        // if result code 100
-        if (resultCode == 100) {
-            // if result code 100 is received
-            // means user edited/deleted product
-            // reload this screen again
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-        }
-
-    }
 
     @Override
     public void onRefresh() {
@@ -203,7 +188,7 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
                             JSONObject jsonobj = new JSONObject(jsonStr);
                             JSONArray jsonArr = jsonobj.getJSONArray(WEBTAG_DATA);
 
-                            // looping through All Products
+                            // looping through Car Locations
                             for (int i = 0; i < jsonArr.length(); i++) {
                                 JSONObject c = jsonArr.getJSONObject(i);
 
@@ -211,12 +196,11 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
                                 HashMap<String, String> map = new HashMap<String, String>();
 
                                 // Storing each json item in variable
-                                map.put(WEBTAG_ID, c.getString(WEBTAG_ID));
-                                map.put(WEBTAG_LATITUDE, c.getString(WEBTAG_LATITUDE));
-                                map.put(WEBTAG_LONGITUDE, c.getString(WEBTAG_LONGITUDE));
-                                map.put(WEBTAG_ONTRIP, c.getString(WEBTAG_ONTRIP));
+                                map.put(TAG_ID, c.getString(WEBTAG_ID));
+                                map.put(TAG_LATITUDE, c.getString(WEBTAG_LATITUDE));
+                                map.put(TAG_LONGITUDE, c.getString(WEBTAG_LONGITUDE));
+                                map.put(TAG_ONTRIP, c.getString(WEBTAG_ONTRIP));
 
-                                Log.d("MAP", String.valueOf(map));
                                 // adding HashList to ArrayList
                                 listItems.add(map);
                             }
@@ -283,9 +267,9 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
                              * */
                             ListAdapter adapter = new SimpleAdapter(
                                     AllCarLocationsActivity.this, listItems,
-                                    R.layout.database_list_car_locations, new String[]{WEBTAG_ID,
-                                    WEBTAG_LATITUDE, WEBTAG_LONGITUDE, WEBTAG_ONTRIP},
-                                    new int[]{R.id.tvID, R.id.tvLatitude, R.id.tvLongitude, R.id.tvOnTrip});
+                                    R.layout.database_list_car_locations, new String[]{TAG_ID,
+                                    TAG_LATITUDE, TAG_LONGITUDE, TAG_ONTRIP},
+                                    new int[]{R.id.listTVID, R.id.listTVLatitude, R.id.listTVLongitude, R.id.listTVOnTrip});
 
                             //updating listview
                             lv.setAdapter(adapter);

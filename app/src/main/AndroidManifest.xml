@@ -22,6 +22,8 @@
         <activity android:name=".TestApiActivity" />
         <activity android:name=".AllAvailableBookingsActivity"/>
         <activity android:name=".AllCarLocationsActivity" />
+        <activity android:name=".ViewAvailableBookingDetailsActivity" />
+        <activity android:name=".ViewCarLocationDetailsActivity" />
 
     </application>
 

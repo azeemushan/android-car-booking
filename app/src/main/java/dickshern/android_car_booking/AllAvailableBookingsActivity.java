@@ -68,6 +68,12 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
 
     ArrayList<HashMap<String, String>> listItems;
 
+    //JSON node names
+    public static final String TAG_ID = "id";
+    public static final String TAG_ARR_LOCATION = "location";
+    public static final String TAG_AVAILABLECARS= "available_cars";
+    public static final String TAG_ARR_DROPOFFLOCATIONS = "dropoff_locations";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,22 +89,16 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
         // Get listview
         lv = findViewById(R.id.listViewMain);
 
-        // on seleting single product
-        // launching Edit Product Screen
+        // on item select, view further details of item
         lv.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                // getting values from selected ListItem
-                String pid = ((TextView) view.findViewById(R.id.tvID)).getText()
-                        .toString().substring(((TextView) view.findViewById(R.id.tvID)).getText()
-                                .toString().indexOf(" ") + 1);;
-
                 // Starting new intent
                 Intent in = new Intent(getApplicationContext(),
-                        MainActivity.class);
-                // sending pid to next activity
+                        ViewAvailableBookingDetailsActivity.class);
+                // Send item to next activity
                 in.putExtra(TAG_BOOKING_ALL_DETAILS, listItems.get(position));
 
                 // starting new activity and expecting some response back
@@ -136,23 +136,6 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
         });
 
     }
-
-    // Response from Edit Product Activity
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        // if result code 100
-        if (resultCode == 100) {
-            // if result code 100 is received
-            // means user edited/deleted product
-            // reload this screen again
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-        }
-
-    }
-
 
 
     @Override
@@ -217,19 +200,18 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
                             JSONObject jsonobj = new JSONObject(jsonStr);
                             JSONArray jsonArr = jsonobj.getJSONArray(WEBTAG_DATA);
 
-                            // looping through All Products
+                            // looping through all Available Booking
                             for (int i = 0; i < jsonArr.length(); i++) {
                                 JSONObject c = jsonArr.getJSONObject(i);
 
                                 // creating new HashMap
                                 HashMap<String, String> map = new HashMap<String, String>();
 
-                                map.put(WEBTAG_ID, c.getString(WEBTAG_ID));
-                                map.put(WEBTAG_ARR_LOCATION, c.getString(WEBTAG_ARR_LOCATION));
-                                map.put(WEBTAG_AVAILABLECARS, c.getString(WEBTAG_AVAILABLECARS));
-                                map.put(WEBTAG_ARR_DROPOFFLOCATIONS, c.getString(WEBTAG_ARR_DROPOFFLOCATIONS));
+                                map.put(TAG_ID, c.getString(WEBTAG_ID));
+                                map.put(TAG_ARR_LOCATION, c.getString(WEBTAG_ARR_LOCATION));
+                                map.put(TAG_AVAILABLECARS, c.getString(WEBTAG_AVAILABLECARS));
+                                map.put(TAG_ARR_DROPOFFLOCATIONS, c.getString(WEBTAG_ARR_DROPOFFLOCATIONS));
 
-                                Log.d("MAP", String.valueOf(map));
                                 // adding HashList to ArrayList
                                 listItems.add(map);
                             }
@@ -295,9 +277,9 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
                              * */
                             ListAdapter adapter = new SimpleAdapter(
                                     AllAvailableBookingsActivity.this, listItems,
-                                    R.layout.database_list_booking_availability, new String[]{WEBTAG_ID,
-                                    WEBTAG_ARR_LOCATION, WEBTAG_AVAILABLECARS, WEBTAG_ARR_DROPOFFLOCATIONS},
-                                    new int[]{R.id.tvID, R.id.tvLocation, R.id.tvAvailableCars, R.id.tvDropOffLocations});
+                                    R.layout.database_list_booking_availability, new String[]{TAG_ID,
+                                    TAG_ARR_LOCATION, TAG_AVAILABLECARS, TAG_ARR_DROPOFFLOCATIONS},
+                                    new int[]{R.id.listTVID, R.id.listTVLocation, R.id.listTVAvailableCars, R.id.listTVDropOffLocations});
                             //updating listview
                             lv.setAdapter(adapter);
                         }

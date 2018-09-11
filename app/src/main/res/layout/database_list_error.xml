@@ -5,8 +5,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <!-- Product id (pid) - will be HIDDEN - used to pass to other activity -->
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
