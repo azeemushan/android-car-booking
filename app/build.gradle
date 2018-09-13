@@ -51,4 +51,10 @@ dependencies {
 
     //Image Slider
     implementation 'me.relex:circleindicator:1.2.2@aar'
+
+    //GMaps
+    implementation 'com.google.android.gms:play-services-analytics:16.0.3'
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+
 }

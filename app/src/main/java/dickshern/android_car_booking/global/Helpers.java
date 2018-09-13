@@ -4,8 +4,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -13,11 +16,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import dickshern.android_car_booking.R;
@@ -130,5 +136,44 @@ public class Helpers {
         }, 2000);
     }
 
+    public static String[] stringToStrArray(String inStr) throws JSONException {
+        JSONArray jsonArray = null;
+        try {
+            jsonArray = new JSONArray(inStr);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String[] strArr = new String[jsonArray.length()];
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            strArr[i] = jsonArray.getString(i);
+        }
+
+        return strArr;
+    }
+
+    public static String getCompleteAddress(Context otherContext, double LATITUDE, double LONGITUDE) {
+        String strAdd = "";
+        Geocoder geocoder = new Geocoder(otherContext, Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1);
+            if (addresses != null) {
+                Address returnedAddress = addresses.get(0);
+                StringBuilder strReturnedAddress = new StringBuilder("");
+
+                for (int i = 0; i <= returnedAddress.getMaxAddressLineIndex(); i++) {
+                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
+                }
+                strAdd = strReturnedAddress.toString();
+                Log.w("@@@Location", strReturnedAddress.toString());
+            } else {
+                Log.w("@@@Location", "No address found!!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("@@@Location", "Fail to get address!");
+        }
+        return strAdd;
+    }
 
 }

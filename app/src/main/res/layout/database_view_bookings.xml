@@ -1,133 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent">
 
     <include
         android:id="@+id/include"
         layout="@layout/include_back_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/tvID"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvID"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="10dip"
+        android:text="Booking ID"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <TextView
+        android:id="@+id/tvAvailableCars"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Available Cars here"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvID" />
+
+    <Button
+        android:id="@+id/btnLocation"
+        style="@style/btn_solid_white_bg_orange_brd_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableEnd="@android:drawable/ic_menu_directions"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAvailableCars" />
+
+    <TextView
+        android:id="@+id/titleDropOffLocations"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="10dip"
+        android:text="Dropoff Locations"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLocation" />
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleDropOffLocations">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/tvID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dip"
-                android:paddingRight="10dip"
-                android:paddingTop="10dip"
-                android:text="Booking ID"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/tvAvailableCars"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Available Cars here"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/titleLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dip"
-                android:paddingRight="10dip"
-                android:paddingTop="10dip"
-                android:text="Locations"
-                android:textSize="30sp" />
-
-            <TextView
-                android:id="@+id/tvLocations"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Locations here"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/etOrderID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dip"
-                android:layout_marginBottom="15dip"
-                android:singleLine="true"
-                android:textSize="24sp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/etUserID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dip"
-                android:layout_marginBottom="15dip"
-                android:singleLine="true"
-                android:textSize="24sp"
-                android:visibility="gone" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dip"
-                android:paddingRight="10dip"
-                android:paddingTop="10dip"
-                android:text="Dropoff Locations"
-                android:textSize="30sp" />
-
-            <TextView
-                android:id="@+id/tvDropLocations"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dip"
-                android:layout_marginBottom="15dip"
-                android:inputType="numberDecimal"
-                android:singleLine="true"
-                android:text="Dropoff here"
-                android:textSize="24sp" />
-
-            <TextView android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Status"
-                android:paddingLeft="10dip"
-                android:paddingRight="10dip"
-                android:paddingTop="10dip"
-                android:textSize="30sp"/>
-
-            <TextView android:id="@+id/inputStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dip"
-                android:layout_marginBottom="15dip"
-                android:lines="1"
-                android:gravity="top"
-                android:textSize="24sp" />
+            android:orientation="vertical">
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:id="@+id/dynaDropOffLocations"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:elevation="0dp">
-
-            </LinearLayout>
-
-            <LinearLayout android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDropLocations"></LinearLayout>
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
