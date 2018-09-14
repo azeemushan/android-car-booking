@@ -116,7 +116,7 @@ public class ViewAvailableBookingDetailsActivity extends Activity {
 
 
         // display item data in page
-        txtId.setText(String.format("Booking ID:%s.", mapDetails.get(TAG_ID)));
+        txtId.setText(String.format("Booking ID: %s", mapDetails.get(TAG_ID)));
         btnLocation.setText(String.format("%s%s%s%s%s%s", cleanAddr(address), cleanAddr(city), cleanAddr(state), cleanAddr(country), cleanAddr(postalCode), cleanAddr(featureName)));
         txtAvailableCars.setText(String.format("Available Cars %s", mapDetails.get(TAG_AVAILABLECARS)));
 
