@@ -327,8 +327,7 @@ public class TestApiActivity extends AppCompatActivity implements View.OnClickLi
 
                                 // Storing each json item in variable
                                 map.put(WEBTAG_ID, c.getString(WEBTAG_ID));
-                                map.put(WEBTAG_LATITUDE, c.getString(WEBTAG_LATITUDE));
-                                map.put(WEBTAG_LONGITUDE, c.getString(WEBTAG_LONGITUDE));
+                                map.put(WEBTAG_LATITUDE + WEBTAG_LONGITUDE, c.getString(WEBTAG_LATITUDE) + ", " + c.getString(WEBTAG_LONGITUDE));
                                 map.put(WEBTAG_ONTRIP, c.getString(WEBTAG_ONTRIP));
 
                                 Log.d("MAP", String.valueOf(map));
@@ -399,8 +398,8 @@ public class TestApiActivity extends AppCompatActivity implements View.OnClickLi
                             ListAdapter adapter = new SimpleAdapter(
                                     TestApiActivity.this, listItems,
                                     R.layout.database_list_car_locations, new String[]{WEBTAG_ID,
-                                    WEBTAG_LATITUDE, WEBTAG_LONGITUDE, WEBTAG_ONTRIP},
-                                    new int[]{R.id.listTVID, R.id.listTVLatitude, R.id.listTVLongitude, R.id.listTVOnTrip});
+                                    WEBTAG_LATITUDE + WEBTAG_LONGITUDE, WEBTAG_ONTRIP},
+                                    new int[]{R.id.listTVID, R.id.listTVLocation, R.id.listTVOnTrip});
 
                             //updating listview
                             lv.setAdapter(adapter);

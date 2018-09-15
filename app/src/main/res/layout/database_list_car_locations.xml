@@ -17,14 +17,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:paddingLeft="2dp"
             android:paddingTop="2dp"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/listTVLatitude"
+            android:id="@+id/listTVAddress"
             style="@style/list_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,39 +37,17 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/listTVLongitude"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="2"
-            android:paddingLeft="2dp"
-            android:paddingTop="2dp"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
             android:id="@+id/listTVOnTrip"
             style="@style/list_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
             android:paddingLeft="2dp"
             android:paddingTop="2dp"
             android:textColor="@android:color/holo_green_light"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/pid"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:textSize="24sp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:textColor="@android:color/holo_green_light"
-            android:layout_width="0dp" />
 
     </LinearLayout>
 

@@ -224,13 +224,11 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
                                 map.put(TAG_ARR_DROPOFFLOCATIONS, c.getString(WEBTAG_ARR_DROPOFFLOCATIONS));
 
                                 String[] location = new String[0];
-
                                 try {
                                     location = Helpers.stringToStrArray(c.getString(WEBTAG_ARR_LOCATION));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-
                                 map.put(TAG_LOCATION_ADDRESS, Helpers.getCompleteAddress(
                                         AllAvailableBookingsActivity.this, Double.valueOf(location[0]), Double.valueOf(location[1])));
                                 map.put(TAG_DROPOFFLOCATIONS_COUNT, String.valueOf(c.getJSONArray(WEBTAG_ARR_DROPOFFLOCATIONS).length()));

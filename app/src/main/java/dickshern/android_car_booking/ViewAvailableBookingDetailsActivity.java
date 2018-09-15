@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,8 +46,10 @@ import static dickshern.android_car_booking.database.DatabaseConfig.WEBTAG_ID;
 public class ViewAvailableBookingDetailsActivity extends Activity {
 
     TextView txtId;
-    Button btnLocation;
+    TextView txtCarCount;
     TextView txtAvailableCars;
+    Button btnLocation;
+
 
     HashMap<String, String> mapDetails = new HashMap<String, String>();
 
@@ -80,8 +81,9 @@ public class ViewAvailableBookingDetailsActivity extends Activity {
         mapDetails = (HashMap<String, String>) i.getSerializableExtra(TAG_BOOKING_ALL_DETAILS);
 
         txtId = findViewById(R.id.tvID);
-        btnLocation = findViewById(R.id.btnLocation);
+        txtCarCount = findViewById(R.id.tvCarCount);
         txtAvailableCars = findViewById(R.id.tvAvailableCars);
+        btnLocation = findViewById(R.id.btnLocation);
 
 
         //PROCESSING
@@ -105,9 +107,7 @@ public class ViewAvailableBookingDetailsActivity extends Activity {
 
         // display item data in pag
         String text = "Booking ID: " + mapDetails.get(TAG_ID);
-
         Spannable spannable = new SpannableString(text);
-
         spannable.setSpan(new ForegroundColorSpan(Color.CYAN), 12, text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         txtId.setText(spannable, TextView.BufferType.SPANNABLE);
@@ -117,7 +117,18 @@ public class ViewAvailableBookingDetailsActivity extends Activity {
             e.printStackTrace();
         }
         btnLocation.setText(Helpers.getCompleteAddress(this, Double.valueOf(location[0]), Double.valueOf(location[1])));
-        txtAvailableCars.setText(String.format("Available Cars %s", mapDetails.get(TAG_AVAILABLECARS)));
+        final String[] finalLocation = location;
+        btnLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Helpers.parseToGoogleMaps(ViewAvailableBookingDetailsActivity.this,
+                        Double.valueOf(finalLocation[0]), Double.valueOf(finalLocation[1]),
+                        Helpers.getCompleteAddress(ViewAvailableBookingDetailsActivity.this, Double.valueOf(finalLocation[0]), Double.valueOf(finalLocation[1])));
+            }
+        });
+
+        txtCarCount.setText(String.format("%s", mapDetails.get(TAG_AVAILABLECARS)));
+//        txtAvailableCars.setText("");
 
         txtId.setFocusable(false);
         btnLocation.setFocusable(false);
@@ -162,10 +173,13 @@ public class ViewAvailableBookingDetailsActivity extends Activity {
 
                     tvAddress.setText(Helpers.getCompleteAddress(this, Double.valueOf(location[0]), Double.valueOf(location[1])));
                     Button btnGetDirection =  newView.findViewById(R.id.btnGetDirection);
+                    final String[] finalLocation1 = location;
                     btnGetDirection.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Helpers.replaceToast(ViewAvailableBookingDetailsActivity.this, String.valueOf(tvAddress.getText()), Toast.LENGTH_SHORT);
+                            Helpers.parseToGoogleMaps(ViewAvailableBookingDetailsActivity.this,
+                                    Double.valueOf(finalLocation1[0]), Double.valueOf(finalLocation1[1]),
+                                    Helpers.getCompleteAddress(ViewAvailableBookingDetailsActivity.this, Double.valueOf(finalLocation1[0]), Double.valueOf(finalLocation1[1])));
                         }
                     });
 

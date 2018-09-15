@@ -77,6 +77,8 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
     public static final String TAG_LATITUDE = "latitude";
     public static final String TAG_LONGITUDE= "longitude";
     public static final String TAG_ONTRIP = "on_trip";
+    public static final String TAG_LOCATION_ADDRESS = "location_address";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -207,7 +209,15 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
                                 map.put(TAG_ID, c.getString(WEBTAG_ID));
                                 map.put(TAG_LATITUDE, c.getString(WEBTAG_LATITUDE));
                                 map.put(TAG_LONGITUDE, c.getString(WEBTAG_LONGITUDE));
-                                map.put(TAG_ONTRIP, c.getString(WEBTAG_ONTRIP));
+
+                                map.put(TAG_LOCATION_ADDRESS, Helpers.getCompleteAddress(
+                                        AllCarLocationsActivity.this, Double.valueOf(c.getString(WEBTAG_LATITUDE)), Double.valueOf(c.getString(WEBTAG_LONGITUDE))));
+
+                                String temp = c.getString(WEBTAG_ONTRIP);
+                                if(temp.equals("true"))
+                                    map.put(TAG_ONTRIP, "No");
+                                else
+                                    map.put(TAG_ONTRIP, "Yes");
 
                                 // adding HashList to ArrayList
                                 listItems.add(map);
@@ -276,8 +286,8 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
                             ListAdapter adapter = new SimpleAdapter(
                                     AllCarLocationsActivity.this, listItems,
                                     R.layout.database_list_car_locations, new String[]{TAG_ID,
-                                    TAG_LATITUDE, TAG_LONGITUDE, TAG_ONTRIP},
-                                    new int[]{R.id.listTVID, R.id.listTVLatitude, R.id.listTVLongitude, R.id.listTVOnTrip});
+                                    TAG_LOCATION_ADDRESS, TAG_ONTRIP},
+                                    new int[]{R.id.listTVID, R.id.listTVAddress, R.id.listTVOnTrip});
 
                             //updating listview
                             lv.setAdapter(adapter);

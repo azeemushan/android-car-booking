@@ -24,7 +24,6 @@
         <activity android:name=".AllCarLocationsActivity" />
         <activity android:name=".ViewAvailableBookingDetailsActivity" />
         <activity android:name=".ViewCarLocationDetailsActivity" />
-        <activity android:name=".MapsActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

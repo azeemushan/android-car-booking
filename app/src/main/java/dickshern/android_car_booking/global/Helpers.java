@@ -2,10 +2,12 @@ package dickshern.android_car_booking.global;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -176,4 +178,13 @@ public class Helpers {
         return strAdd;
     }
 
+    public static void parseToGoogleMaps(Context otherContext, Double latitude, Double longitude, String address){
+        Uri gmmIntentUri = Uri.parse("geo:" + latitude + "," + longitude + "?q=" + address);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(otherContext.getPackageManager()) != null) {
+            otherContext.startActivity(mapIntent);
+        }
+
+    }
 }
