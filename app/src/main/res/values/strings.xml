@@ -38,5 +38,10 @@
     <string name="label_booking_id">Booking ID:</string>
     <string name="laebel_no">No</string>
     <string name="label_yes">Yes</string>
+    <string name="col_id">ID</string>
+    <string name="col_address">Address</string>
+    <string name="col_available_cars">Available Cars</string>
+    <string name="col_dropoff_locations">Drop Off Locations</string>
+    <string name="col_available">Available</string>
 
 </resources>

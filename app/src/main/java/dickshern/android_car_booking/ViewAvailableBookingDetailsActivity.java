@@ -104,7 +104,7 @@ public class ViewAvailableBookingDetailsActivity extends Activity {
         }
 
 
-        // display item data in pag
+        // display item data in page
         String text = getString(R.string.label_booking_id) + mapDetails.get(TAG_ID);
         Spannable spannable = new SpannableString(text);
         spannable.setSpan(new ForegroundColorSpan(Color.CYAN), 10, text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

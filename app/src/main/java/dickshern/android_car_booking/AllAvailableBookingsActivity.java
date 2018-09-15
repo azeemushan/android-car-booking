@@ -1,6 +1,7 @@
 package dickshern.android_car_booking;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,10 +11,12 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -146,6 +149,21 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
                 refresh();
             }
         });
+
+        //Add list header
+        LinearLayout layoutHeader = findViewById(R.id.layoutHeader);
+        LayoutInflater tableHead = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View newRow = tableHead.inflate(R.layout.database_list_booking_availability, null);
+
+        ((TextView) newRow.findViewById(R.id.listTVID)).setText(R.string.col_id);
+        Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVID), 0.5f);
+        ((TextView) newRow.findViewById(R.id.listTVAddress)).setText(R.string.col_address);
+        Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVAddress), 1.0f);
+        ((TextView) newRow.findViewById(R.id.listTVAvailableCars)).setText(R.string.col_available_cars);
+        Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVAvailableCars), 2.0f);
+//        ((TextView) newRow.findViewById(R.id.listTVDropOffLocations)).setText(R.string.col_dropoff_locations);
+//        Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVDropOffLocations), 2.0f);
+        layoutHeader.addView(newRow);
 
     }
 
@@ -301,7 +319,7 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
                                     AllAvailableBookingsActivity.this, listItems,
                                     R.layout.database_list_booking_availability, new String[]{TAG_ID,
                                     TAG_LOCATION_ADDRESS, TAG_AVAILABLECARS, TAG_DROPOFFLOCATIONS_COUNT},
-                                    new int[]{R.id.listTVID, R.id.listTVLocation, R.id.listTVAvailableCars, R.id.listTVDropOffLocations});
+                                    new int[]{R.id.listTVID, R.id.listTVAddress, R.id.listTVAvailableCars, R.id.listTVDropOffLocations});
                             //updating listview
                             lv.setAdapter(adapter);
                         }
@@ -335,4 +353,6 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
         new webGetBooking().execute();
         Helpers.DelayedRefreshStop(swipeRefreshLayout);
     }
+
+
 }

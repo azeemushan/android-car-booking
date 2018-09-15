@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -195,5 +196,14 @@ public class Helpers {
             otherContext.startActivity(mapIntent);
         }
 
+    }
+
+    public static void adjustLayoutWeight(TextView textView, Float weight){
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                0,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                weight
+        );
+        textView.setLayoutParams(param);
     }
 }

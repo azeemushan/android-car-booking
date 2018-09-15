@@ -255,7 +255,7 @@ public class TestApiActivity extends AppCompatActivity implements View.OnClickLi
                                     TestApiActivity.this, listItems,
                                     R.layout.database_list_booking_availability, new String[]{WEBTAG_ID,
                                     WEBTAG_ARR_LOCATION, WEBTAG_AVAILABLECARS, WEBTAG_ARR_DROPOFFLOCATIONS},
-                                    new int[]{R.id.listTVID, R.id.listTVLocation, R.id.tvAvailableCars, R.id.listTVDropOffLocations});
+                                    new int[]{R.id.listTVID, R.id.listTVAddress, R.id.tvAvailableCars, R.id.listTVDropOffLocations});
                             //updating listview
                             lv.setAdapter(adapter);
                         }
@@ -399,7 +399,7 @@ public class TestApiActivity extends AppCompatActivity implements View.OnClickLi
                                     TestApiActivity.this, listItems,
                                     R.layout.database_list_car_locations, new String[]{WEBTAG_ID,
                                     WEBTAG_LATITUDE + WEBTAG_LONGITUDE, WEBTAG_ONTRIP},
-                                    new int[]{R.id.listTVID, R.id.listTVLocation, R.id.listTVOnTrip});
+                                    new int[]{R.id.listTVID, R.id.listTVAddress, R.id.listTVOnTrip});
 
                             //updating listview
                             lv.setAdapter(adapter);

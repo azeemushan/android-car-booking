@@ -2,6 +2,7 @@ package dickshern.android_car_booking;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -14,12 +15,14 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -152,6 +155,19 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
             }
         });
 
+        //Add list header
+        LinearLayout layoutHeader = findViewById(R.id.layoutHeader);
+
+        LayoutInflater tableHead = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View newRow = tableHead.inflate(R.layout.database_list_car_locations, null);
+
+        ((TextView) newRow.findViewById(R.id.listTVID)).setText(R.string.col_id);
+        Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVID), 0.5f);
+        ((TextView) newRow.findViewById(R.id.listTVAddress)).setText(R.string.col_address);
+        Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVAddress), 1.0f);
+        ((TextView) newRow.findViewById(R.id.listTVOnTrip)).setText(R.string.col_available);
+        Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVOnTrip), 0.7f);
+        layoutHeader.addView(newRow);
     }
 
 

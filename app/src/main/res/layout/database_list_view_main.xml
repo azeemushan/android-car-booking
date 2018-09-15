@@ -55,12 +55,25 @@
                 android:textAlignment="center"
                 android:textSize="30sp" />
         </android.support.design.widget.CollapsingToolbarLayout>
+
     </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/common_google_signin_btn_text_light_default"
+        android:orientation="vertical"
+        android:translationY="30dp"
+        android:translationZ="100dp"
+        app:layout_anchor="@+id/appbar"
+        app:layout_anchorGravity="bottom|center"></LinearLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
         <android.support.v4.widget.NestedScrollView

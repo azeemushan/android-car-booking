@@ -24,7 +24,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/listTVLocation"
+            android:id="@+id/listTVAddress"
             style="@style/list_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -60,7 +60,8 @@
             android:paddingTop="2dp"
             android:textColor="@android:color/holo_green_light"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/pid"
