@@ -37,20 +37,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    // volley
-    implementation 'com.android.volley:volley:1.0.0'
 
     implementation 'com.android.support:design:26.1.0'
-    // Glide
-    implementation 'com.github.bumptech.glide:glide:3.7.0'
-
     implementation "org.apache.httpcomponents:httpcore:4.3"
     implementation "org.apache.httpcomponents:httpmime:4.3"
-
-//    implementation 'com.github.bmarrdev:android-DecoView-charting:v0.9.3'
-
-    //Image Slider
-    implementation 'me.relex:circleindicator:1.2.2@aar'
 
     //GMaps
     implementation 'com.google.android.gms:play-services-analytics:16.0.3'
