@@ -159,8 +159,10 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
         Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVID), 0.5f);
         ((TextView) newRow.findViewById(R.id.listTVAddress)).setText(R.string.col_address);
         Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVAddress), 1.0f);
+        newRow.findViewById(R.id.listTVAddress).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         ((TextView) newRow.findViewById(R.id.listTVAvailableCars)).setText(R.string.col_available_cars);
         Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVAvailableCars), 2.0f);
+        newRow.findViewById(R.id.listTVAvailableCars).setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
 //        ((TextView) newRow.findViewById(R.id.listTVDropOffLocations)).setText(R.string.col_dropoff_locations);
 //        Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVDropOffLocations), 2.0f);
         layoutHeader.addView(newRow);

@@ -165,8 +165,10 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
         Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVID), 0.5f);
         ((TextView) newRow.findViewById(R.id.listTVAddress)).setText(R.string.col_address);
         Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVAddress), 1.0f);
+        newRow.findViewById(R.id.listTVAddress).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         ((TextView) newRow.findViewById(R.id.listTVOnTrip)).setText(R.string.col_available);
         Helpers.adjustLayoutWeight((TextView) newRow.findViewById(R.id.listTVOnTrip), 0.7f);
+        newRow.findViewById(R.id.listTVOnTrip).setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
         layoutHeader.addView(newRow);
     }
 
