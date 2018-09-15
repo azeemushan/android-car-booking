@@ -26,7 +26,7 @@
 
     <Button
         android:id="@+id/btnGetDirection"
-        style="@style/btn_solid_orange_white_txt"
+        style="@style/btn_solid_color_white_txt"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"

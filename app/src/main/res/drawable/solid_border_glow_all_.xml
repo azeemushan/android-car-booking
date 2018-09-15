@@ -5,11 +5,11 @@
         <shape>
             <padding
                 android:bottom="1dp"
-                android:left="0dp"
+                android:left="1dp"
                 android:right="1dp"
-                android:top="0dp" />
+                android:top="1dp" />
 
-            <solid android:color="#00ec4c3e" />
+            <solid android:color="#223fad" />
 
             <corners android:radius="12dp" />
         </shape>
@@ -18,11 +18,11 @@
         <shape>
             <padding
                 android:bottom="1dp"
-                android:left="0dp"
+                android:left="1dp"
                 android:right="1dp"
-                android:top="0dp" />
+                android:top="1dp" />
 
-            <solid android:color="#10ec4c3e" />
+            <solid android:color="#223f9d" />
 
             <corners android:radius="12dp" />
         </shape>
@@ -31,11 +31,11 @@
         <shape>
             <padding
                 android:bottom="1dp"
-                android:left="0dp"
+                android:left="1dp"
                 android:right="1dp"
-                android:top="0dp" />
+                android:top="1dp" />
 
-            <solid android:color="#20ec4c3e" />
+            <solid android:color="#223f8d" />
 
             <corners android:radius="12dp" />
         </shape>
@@ -44,11 +44,11 @@
         <shape>
             <padding
                 android:bottom="1dp"
-                android:left="0dp"
+                android:left="1dp"
                 android:right="1dp"
-                android:top="0dp" />
+                android:top="1dp" />
 
-            <solid android:color="#30ec4c3e" />
+            <solid android:color="#223f7d" />
 
             <corners android:radius="12dp" />
         </shape>
@@ -57,11 +57,11 @@
         <shape>
             <padding
                 android:bottom="1dp"
-                android:left="0dp"
+                android:left="1dp"
                 android:right="1dp"
-                android:top="0dp" />
+                android:top="1dp" />
 
-            <solid android:color="#50ec4c3e" />
+            <solid android:color="#223f6d" />
 
             <corners android:radius="12dp" />
         </shape>
@@ -71,13 +71,13 @@
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
             <stroke
                 android:width="12dp"
-                android:color="@color/main_orange" />
+                android:color="@color/main_color" />
 
             <padding
-                android:bottom="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:top="2dp" />
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
 
             <corners
                 android:bottomLeftRadius="12dp"

@@ -65,7 +65,7 @@
 
     <Button
         android:id="@+id/btnLocation"
-        style="@style/btn_solid_white_bg_orange_brd_txt"
+        style="@style/btn_solid_white_bg_color_brd_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

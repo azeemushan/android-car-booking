@@ -14,9 +14,9 @@
     <color name="button_green">#00FF00</color>
 
     <!--CUSTOM COLORS-->
-    <color name="main_orange">#456ff9</color>
-    <color name="main_orange_dark">#223ff9</color>
-    <color name="orange_border">#223fbd</color>
+    <color name="main_color">#456ff9</color>
+    <color name="main_color_dark">#223ff9</color>
+    <color name="border_color">#223fbd</color>
 
 
 
