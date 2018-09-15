@@ -1,5 +1,6 @@
 package dickshern.android_car_booking.global;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -93,6 +95,13 @@ public class Helpers {
         dialog.show();
     }
 
+    public static void setFullScreen(Activity activity){
+        activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
+
     public static String addQueryArg(HashMap<String, String> map){
         StringBuilder temp = new StringBuilder("?");
 
@@ -169,11 +178,11 @@ public class Helpers {
                 strAdd = strReturnedAddress.toString();
                 Log.w("@@@Location", strReturnedAddress.toString());
             } else {
-                Log.w("@@@Location", "No address found!!");
+                Log.w("@@@Location", otherContext.getString(R.string.error_no_address));
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e("@@@Location", "Fail to get address!");
+            Log.e("@@@Location", otherContext.getString(R.string.error_fail_to_get_address));
         }
         return strAdd;
     }

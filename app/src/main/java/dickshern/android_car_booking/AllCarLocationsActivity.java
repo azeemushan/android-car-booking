@@ -78,11 +78,13 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
     public static final String TAG_LONGITUDE= "longitude";
     public static final String TAG_ONTRIP = "on_trip";
     public static final String TAG_LOCATION_ADDRESS = "location_address";
+    public static final String TAG_ONTRIP_LABEL = "on_trip_label";
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Helpers.setFullScreen(this);
         setContentView(R.layout.database_list_view_main);
 
         ImageButton imgBtnBack = findViewById(R.id.imgBtnBack);
@@ -213,11 +215,12 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
                                 map.put(TAG_LOCATION_ADDRESS, Helpers.getCompleteAddress(
                                         AllCarLocationsActivity.this, Double.valueOf(c.getString(WEBTAG_LATITUDE)), Double.valueOf(c.getString(WEBTAG_LONGITUDE))));
 
+                                map.put(TAG_ONTRIP, c.getString(WEBTAG_ONTRIP));
                                 String temp = c.getString(WEBTAG_ONTRIP);
                                 if(temp.equals("true"))
-                                    map.put(TAG_ONTRIP, "No");
+                                    map.put(TAG_ONTRIP_LABEL, getString(R.string.laebel_no));
                                 else
-                                    map.put(TAG_ONTRIP, "Yes");
+                                    map.put(TAG_ONTRIP_LABEL, getString(R.string.label_yes));
 
                                 // adding HashList to ArrayList
                                 listItems.add(map);
@@ -347,7 +350,7 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
 
     public void refresh(){
         swipeRefreshLayout.setRefreshing(true);
-        Helpers.showToast(AllCarLocationsActivity.this, "Getting all car locations", Toast.LENGTH_SHORT);
+        Helpers.showToast(AllCarLocationsActivity.this, getString(R.string.system_getting_custom, "all car locations"), Toast.LENGTH_SHORT);
         new webGetCarLocation().execute();
         Helpers.DelayedRefreshStop(swipeRefreshLayout);
     }

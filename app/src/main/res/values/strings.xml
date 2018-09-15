@@ -22,14 +22,21 @@
     <string name="system_message_fail_get_json_server">Couldn\'t get json from server.</string>
     <string name="system_message_error_parsing_json">Json parsing error:</string>
     <string name="system_response_null">Response is NULL</string>
-    <string name="creating_custom">Creating %1$s…</string>
-    <string name="saving_custom">Saving %1$s…</string>
-    <string name="deleting_custom">Deleting %1$s…</string>
+    <string name="system_getting_custom">Getting %1$s</string>
     <string name="system_message_button_does_not_have_function">Button does not have a function.</string>
 
     <string name="message_custom_cannot_be_empty">%1$s cannot be empty</string>
 
     <!--PAGES-->
     <string name="title_car_booking">Car Booking</string>
+    <string name="error_no_address">No address found!!</string>
+    <string name="error_fail_to_get_address">Fail to get address!</string>
+    <string name="message_car_on_trip">Car in currently on a trip</string>
+    <string name="message_car_available">Car is currently on standby and available for use</string>
+    <string name="message_status_unknown">Status unknown</string>
+    <string name="label_car_id">Car ID:%s</string>
+    <string name="label_booking_id">Booking ID:</string>
+    <string name="laebel_no">No</string>
+    <string name="label_yes">Yes</string>
 
 </resources>

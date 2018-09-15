@@ -50,15 +50,15 @@ public class ViewAvailableBookingDetailsActivity extends Activity {
     TextView txtAvailableCars;
     Button btnLocation;
 
-
     HashMap<String, String> mapDetails = new HashMap<String, String>();
-
+    String[] location = new String[0];
 
     PrefsManager prefsManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Helpers.setFullScreen(this);
         setContentView(R.layout.database_view_bookings);
 
         ImageButton imgBtnBack = findViewById(R.id.imgBtnBack);
@@ -86,8 +86,7 @@ public class ViewAvailableBookingDetailsActivity extends Activity {
         btnLocation = findViewById(R.id.btnLocation);
 
 
-        //PROCESSING
-        String[] location = new String[0];
+        //Display data in page
         try {
             location = Helpers.stringToStrArray(mapDetails.get(TAG_ARR_LOCATION));
         } catch (JSONException e) {
@@ -106,9 +105,9 @@ public class ViewAvailableBookingDetailsActivity extends Activity {
 
 
         // display item data in pag
-        String text = "Booking ID: " + mapDetails.get(TAG_ID);
+        String text = getString(R.string.label_booking_id) + mapDetails.get(TAG_ID);
         Spannable spannable = new SpannableString(text);
-        spannable.setSpan(new ForegroundColorSpan(Color.CYAN), 12, text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannable.setSpan(new ForegroundColorSpan(Color.CYAN), 10, text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         txtId.setText(spannable, TextView.BufferType.SPANNABLE);
         try {

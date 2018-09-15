@@ -80,6 +80,7 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Helpers.setFullScreen(this);
         setContentView(R.layout.database_list_view_main);
 
         prefsManager = new PrefsManager(AllAvailableBookingsActivity.this);
@@ -330,7 +331,7 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
 
     public void refresh(){
         swipeRefreshLayout.setRefreshing(true);
-        Helpers.showToast(AllAvailableBookingsActivity.this, "Getting Available Bookings", Toast.LENGTH_SHORT);
+        Helpers.showToast(AllAvailableBookingsActivity.this, getString(R.string.system_getting_custom, "Available Bookings"), Toast.LENGTH_SHORT);
         new webGetBooking().execute();
         Helpers.DelayedRefreshStop(swipeRefreshLayout);
     }
