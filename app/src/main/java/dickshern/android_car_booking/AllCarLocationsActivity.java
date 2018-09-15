@@ -83,6 +83,14 @@ public class AllCarLocationsActivity extends AppCompatActivity implements SwipeR
         super.onCreate(savedInstanceState);
         setContentView(R.layout.database_list_view_main);
 
+        ImageButton imgBtnBack = findViewById(R.id.imgBtnBack);
+        imgBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         prefsManager = new PrefsManager(AllCarLocationsActivity.this);
 
         TextView tvDBCategory;

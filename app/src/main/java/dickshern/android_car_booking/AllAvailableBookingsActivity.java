@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -73,6 +74,8 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
     public static final String TAG_ARR_LOCATION = "location";
     public static final String TAG_AVAILABLECARS= "available_cars";
     public static final String TAG_ARR_DROPOFFLOCATIONS = "dropoff_locations";
+    public static final String TAG_LOCATION_ADDRESS = "location_address";
+    public static final String TAG_DROPOFFLOCATIONS_COUNT = "dropoff_locations_count";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,6 +83,14 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
         setContentView(R.layout.database_list_view_main);
 
         prefsManager = new PrefsManager(AllAvailableBookingsActivity.this);
+
+        ImageButton imgBtnBack = findViewById(R.id.imgBtnBack);
+        imgBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         TextView tvDBCategory = (TextView) findViewById(R.id.tvDBCategory);
         tvDBCategory.setText("All Available Bookings");
@@ -212,6 +223,18 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
                                 map.put(TAG_AVAILABLECARS, c.getString(WEBTAG_AVAILABLECARS));
                                 map.put(TAG_ARR_DROPOFFLOCATIONS, c.getString(WEBTAG_ARR_DROPOFFLOCATIONS));
 
+                                String[] location = new String[0];
+
+                                try {
+                                    location = Helpers.stringToStrArray(c.getString(WEBTAG_ARR_LOCATION));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                                map.put(TAG_LOCATION_ADDRESS, Helpers.getCompleteAddress(
+                                        AllAvailableBookingsActivity.this, Double.valueOf(location[0]), Double.valueOf(location[1])));
+                                map.put(TAG_DROPOFFLOCATIONS_COUNT, String.valueOf(c.getJSONArray(WEBTAG_ARR_DROPOFFLOCATIONS).length()));
+
                                 // adding HashList to ArrayList
                                 listItems.add(map);
                             }
@@ -278,7 +301,7 @@ public class AllAvailableBookingsActivity extends AppCompatActivity implements S
                             ListAdapter adapter = new SimpleAdapter(
                                     AllAvailableBookingsActivity.this, listItems,
                                     R.layout.database_list_booking_availability, new String[]{TAG_ID,
-                                    TAG_ARR_LOCATION, TAG_AVAILABLECARS, TAG_ARR_DROPOFFLOCATIONS},
+                                    TAG_LOCATION_ADDRESS, TAG_AVAILABLECARS, TAG_DROPOFFLOCATIONS_COUNT},
                                     new int[]{R.id.listTVID, R.id.listTVLocation, R.id.listTVAvailableCars, R.id.listTVDropOffLocations});
                             //updating listview
                             lv.setAdapter(adapter);

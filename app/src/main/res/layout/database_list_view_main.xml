@@ -7,17 +7,29 @@
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
-        android:fitsSystemWindows="true"
-        android:layout_height="192dp"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:toolbarId="@+id/toolbar"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
-            app:contentScrim="?attr/colorPrimary">
+            app:toolbarId="@+id/toolbar">
+
+            <include
+                android:id="@+id/include"
+                layout="@layout/include_back_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="@+id/tvID"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/app_bar_image"
@@ -40,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Database Item Here"
-                android:textAlignment="viewStart"
+                android:textAlignment="center"
                 android:textSize="30sp" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>

@@ -3,10 +3,14 @@ package dickshern.android_car_booking;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -98,26 +102,21 @@ public class ViewAvailableBookingDetailsActivity extends Activity {
             e.printStackTrace();
         }
 
-        String address = null;
-        String city = null;
-        String state = null;
-        String country = null;
-        String postalCode = null;
-        String featureName = null;
-        if (addresses != null) {
-            address = addresses.get(0).getAddressLine(0);
-            city = addresses.get(0).getLocality();
-            state = addresses.get(0).getAdminArea();
-            country = addresses.get(0).getCountryName();
-            postalCode = addresses.get(0).getPostalCode();
-            featureName = addresses.get(0).getFeatureName();
-        } else
-            Helpers.showToast(this, "No address found!", Toast.LENGTH_SHORT);
 
+        // display item data in pag
+        String text = "Booking ID: " + mapDetails.get(TAG_ID);
 
-        // display item data in page
-        txtId.setText(String.format("Booking ID: %s", mapDetails.get(TAG_ID)));
-        btnLocation.setText(String.format("%s%s%s%s%s%s", cleanAddr(address), cleanAddr(city), cleanAddr(state), cleanAddr(country), cleanAddr(postalCode), cleanAddr(featureName)));
+        Spannable spannable = new SpannableString(text);
+
+        spannable.setSpan(new ForegroundColorSpan(Color.CYAN), 12, text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        txtId.setText(spannable, TextView.BufferType.SPANNABLE);
+        try {
+            location = Helpers.stringToStrArray(mapDetails.get(TAG_ARR_LOCATION));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        btnLocation.setText(Helpers.getCompleteAddress(this, Double.valueOf(location[0]), Double.valueOf(location[1])));
         txtAvailableCars.setText(String.format("Available Cars %s", mapDetails.get(TAG_AVAILABLECARS)));
 
         txtId.setFocusable(false);
