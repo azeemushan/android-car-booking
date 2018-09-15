@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button btnGoToBookingAvailability;
     Button btnGoToCarLocations;
+    Button btnGoToAbout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,23 +25,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnGoToBookingAvailability.setOnClickListener(this);
         btnGoToCarLocations = findViewById(R.id.btnGoToCarLocations);
         btnGoToCarLocations.setOnClickListener(this);
+        btnGoToAbout = findViewById(R.id.btnGoToAbout);
+        btnGoToAbout.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View click) {
         int id = click.getId();
-        Intent newIntent;
+        Intent newIntent = null;
 
         switch (id) {
             case R.id.btnGoToBookingAvailability:
                 newIntent = new Intent(this, AllAvailableBookingsActivity.class);
-                startActivity(newIntent);
                 break;
 
             case R.id.btnGoToCarLocations:
                 newIntent = new Intent(this, AllCarLocationsActivity.class);
-                startActivity(newIntent);
+                break;
+            case R.id.btnGoToAbout:
+                newIntent = new Intent(this, AboutActivity.class);
                 break;
 
             default:
@@ -48,5 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
 
+        if(newIntent != null)
+            startActivity(newIntent);
     }
 }

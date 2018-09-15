@@ -43,5 +43,7 @@
     <string name="col_available_cars">Available Cars</string>
     <string name="col_dropoff_locations">Drop Off Locations</string>
     <string name="col_available">Available</string>
+    <string name="para_about">Car Booking by Dick Shern</string>
+    <string name="page_title_about">About</string>
 
 </resources>
