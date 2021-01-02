@@ -1,5 +1,4 @@
-# Android Car Booking by Dick Shern
-
+# Android Car Booking by Azeem Ushan
 Simple Android app that gets and displays info about car bookings & available cars with Google Maps integration.
 
 ## Requirements
@@ -17,6 +16,3 @@ Simple Android app that gets and displays info about car bookings & available ca
 4. Create a new resource file called 'keys.xml' and save the API key in the file as a new string value called 'google_map_api'.
 5. Build and run app on device.
 
-## Maintainers
-This project is mantained by:
-* [Dick Shern](https://github.com/DickShern)
